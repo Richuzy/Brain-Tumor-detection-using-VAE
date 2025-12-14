@@ -23,4 +23,31 @@ The workflow consists of:
 ## 2. Dataset Structure
 
 The notebook expects a directory structured as:
+```text
+DATA_ROOT/
+├── train/
+│ └── no_tumor/ # ONLY normal images (used for AE training)
+├── test/
+│ ├── no_tumor/ # normal class
+│ ├── glioma_tumor/
+│ ├── meningioma_tumor/
+│ └── pituitary_tumor/
+```
+- **Train set:** must contain **only non-tumor images**.
+- **Test set:** contains **1 normal class + 3 tumor classes**.
 
+---
+
+## 3. Image Preprocessing
+
+All images go through:
+
+```python
+IMG_SIZE = 224
+
+transforms.Compose([
+    transforms.Resize((IMG_SIZE, IMG_SIZE), interpolation=Image.BICUBIC),
+    transforms.Grayscale(num_output_channels=1),
+    transforms.ToTensor(),
+    transforms.Normalize([0.5], [0.5]),   # pixel range → [-1, 1]
+])
