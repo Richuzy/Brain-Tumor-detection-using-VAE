@@ -3,9 +3,6 @@
 This project implements an **unsupervised anomaly-detection pipeline** for brain-tumor MRI images using a **Convolutional Autoencoder (ConvAE)**.  
 The autoencoder is trained **only on NON-tumor (normal) images**, and tumor cases are detected later using reconstruction-error–based anomaly scoring.
 
-This README describes all steps covered up to the notebook cell:
-
-> **"===== Anomaly scoring on 4-class test set (grayscale) + heatmaps ====="**
 
 ---
 
